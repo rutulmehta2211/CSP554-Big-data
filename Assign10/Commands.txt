@@ -1,0 +1,17 @@
+ec2-18-191-92-80.us-east-2.compute.amazonaws.com
+
+ssh -i CSP554-BigData.pem hadoop@ec2-18-191-92-80.us-east-2.compute.amazonaws.com
+
+scp -i CSP554-BigData.pem consume.py hadoop@ec2-18-191-92-80.us-east-2.compute.amazonaws.com:/home/hadoop
+
+scp -i CSP554-BigData.pem log4j.properties hadoop@ec2-18-191-92-80.us-east-2.compute.amazonaws.com:/home/hadoop
+
+EC-1
+sudo cp ./log4j.properties /etc/spark/conf/log4j.properties
+nc -lk 3333
+
+EC-2
+spark-submit consume.py
+
+EC-1
+Enter some text
